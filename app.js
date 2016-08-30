@@ -6,7 +6,7 @@ var app = express();
 app.enable("jsonp callback");
 
 app.get('/get', function(req, res){
-    console.log(req.ip+" :"+req.query.url);
+    console.log(req.ip+"/"+req.header("X-Real-IP")+": "+req.query.url);
     res.header('Content-type','application/json');
     res.header('Charset','utf8'); 
     request(req.query.url, function(error, response, html) {
